@@ -1,6 +1,8 @@
 package com.myself223.geeksdelivery.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
+import com.myself223.geeksdelivery.data.mapper.DataMapper
+import com.myself223.geeksdelivery.domain.model.CategoryModel
 
 data class CategoryDto(
     @SerializedName("idCategory")
@@ -8,7 +10,14 @@ data class CategoryDto(
     @SerializedName("strCategory")
     val name:String? = null,
     @SerializedName("strCategoryThumb")
-    val thumbCategory:String?= null,
+    val img:String?= null,
     @SerializedName("strCategoryDescription")
     val categoryDesc: String? = null
-)
+):DataMapper<CategoryModel> {
+    override fun toDomain()= CategoryModel(
+        id = id,
+        categoryDesc = categoryDesc,
+        name = name,
+        imgD = img
+    )
+}

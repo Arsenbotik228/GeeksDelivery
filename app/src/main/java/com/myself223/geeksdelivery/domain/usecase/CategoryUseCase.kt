@@ -1,13 +1,15 @@
 package com.myself223.geeksdelivery.domain.usecase
 
-import androidx.lifecycle.LiveData
-import com.myself223.geeksdelivery.data.base.BaseMainResponse
-import com.myself223.geeksdelivery.data.remote.dto.CategoryDto
+import com.myself223.geeksdelivery.core.base.Either
+import com.myself223.geeksdelivery.domain.model.CategoryModel
+import com.myself223.geeksdelivery.domain.model.MealModel
 import com.myself223.geeksdelivery.domain.repository.CategoryRepository
-import com.myself223.geeksdelivery.presentation.model.Resourse
+import kotlinx.coroutines.flow.Flow
 
 class CategoryUseCase(private val repository: CategoryRepository) {
-    operator fun invoke(): LiveData<Resourse<BaseMainResponse<CategoryDto>?>> {
-        return repository.getAllCategory()
-    }
+    operator fun invoke() = repository.getAllCategory()
+    operator fun invoke(categoryName: String) = repository.getMealByCategory(categoryName = categoryName)
+
+    fun getMealsByCategory(categoryName: String): Flow<Either<String, List<MealModel>>> = repository.getMealByCategory(categoryName)
+
 }

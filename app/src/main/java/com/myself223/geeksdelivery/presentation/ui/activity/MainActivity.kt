@@ -1,9 +1,6 @@
 package com.myself223.geeksdelivery.presentation.ui.activity
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +16,11 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val navController: NavController by lazy {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_content) as NavHostFragment
+        navHostFragment.navController
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,6 +30,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        initBottomNav()
 
+    }
+    private fun initBottomNav() {
+        binding.bottomNav.apply {
+            setupWithNavController(navController)
+            itemIconTintList = null
+        }
     }
 }

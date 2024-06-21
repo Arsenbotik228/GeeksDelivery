@@ -1,16 +1,16 @@
 package com.myself223.geeksdelivery.presentation.ui.adapters.menu_adapters
 
-
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.myself223.geeksdelivery.data.remote.dto.CategoryDto
+import androidx.recyclerview.widget.RecyclerView
 import com.myself223.geeksdelivery.databinding.ItemCategoryBinding
+import com.myself223.geeksdelivery.presentation.model.CategoryUi
 
-class CategoryAdapter:ListAdapter<CategoryDto,CategoryAdapter.CategoryViewHolder>(CategoryDiffutil()){
+class CategoryAdapter(private val click: (String) -> Unit) :
+    ListAdapter<CategoryUi, CategoryAdapter.CategoryViewHolder>(CategoryDiffutil()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
             ItemCategoryBinding.inflate(
@@ -21,33 +21,28 @@ class CategoryAdapter:ListAdapter<CategoryDto,CategoryAdapter.CategoryViewHolder
         )
     }
 
-    inner class CategoryViewHolder(private val binding: ItemCategoryBinding):ViewHolder(binding.root) {
-        fun onBind(it:CategoryDto){
-            binding.itemNameCategory.text = it.name
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+        val model = getItem(position)
+        holder.onBind(model)
+        holder.itemView.setOnClickListener {
+            model?.name?.let { name -> click(name) }
         }
     }
 
-    override fun onBindViewHolder(holder: CategoryAdapter.CategoryViewHolder, position: Int) {
-        val model = getItem(position)
-        holder.onBind(model)
-
+    inner class CategoryViewHolder(private val binding: ItemCategoryBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(item: CategoryUi) {
+            binding.itemNameCategory.text = item.name
+        }
     }
-
 }
-class CategoryDiffutil:DiffUtil.ItemCallback<CategoryDto>() {
-    override fun areItemsTheSame(
-        oldItem: CategoryDto,
-        newItem: CategoryDto
-    ): Boolean {
+
+class CategoryDiffutil : DiffUtil.ItemCallback<CategoryUi>() {
+    override fun areItemsTheSame(oldItem: CategoryUi, newItem: CategoryUi): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(
-        oldItem: CategoryDto,
-        newItem: CategoryDto
-    ): Boolean {
+    override fun areContentsTheSame(oldItem: CategoryUi, newItem: CategoryUi): Boolean {
         return oldItem == newItem
-
     }
-
 }
