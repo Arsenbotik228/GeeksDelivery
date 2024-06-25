@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.bundles.navigaion.component)
     // reflection-based flavor
     implementation ("com.github.kirich1409:viewbindingpropertydelegate-full:1.5.9")
+    implementation(project(":features:main"))
+
 
 
 }

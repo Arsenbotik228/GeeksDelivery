@@ -3,21 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_controller"
-    app:startDestination="@id/menuFragment">
+    app:startDestination="@id/mainFlowFragment">
+
 
     <fragment
-        android:id="@+id/menuFragment"
-        android:name="com.myself223.geeksdelivery.presentation.ui.fragments.menu.MenuFragment"
-        android:label="MenuFragment"
-        tools:layout="@layout/fragment_menu"/>
-    <fragment
-        android:id="@+id/basketFragment"
-        android:name="com.myself223.geeksdelivery.presentation.ui.fragments.basket.BasketFragment"
-        android:label="fragment_basket"
-        tools:layout="@layout/fragment_basket" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.myself223.geeksdelivery.presentation.ui.fragments.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/mainFlowFragment"
+        android:name="com.myself223.main.presentation.ui.fragments.MainFlowFragment"
+        android:label="MainFlowFragment"
+        tools:layout="@layout/fragment_main_flow"/>
 </navigation>

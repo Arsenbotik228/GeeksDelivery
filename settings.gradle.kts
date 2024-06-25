@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "GeeksDelivery"
 include(":app")
- 
+include(":common")
+include(":core")
+include(":features:main",":features:main:data",":features:main:domain")

@@ -1,7 +1,7 @@
 package com.myself223.geeksdelivery
 
 import android.app.Application
-import com.myself223.geeksdelivery.data.module.networkModule
+import com.myself223.data.module.networkModule
 import com.myself223.geeksdelivery.data.module.repoModule
 import com.myself223.geeksdelivery.domain.module.useCaseModule
 import com.myself223.geeksdelivery.presentation.module.uiModule
