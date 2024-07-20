@@ -2,7 +2,7 @@ package com.myself223.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 import com.myself223.data.mapper.DataMapper
-import com.myself223.geeksdelivery.domain.model.MealModel
+import com.myself223.domain.model.MealModel
 
 data class MealDto(
     @SerializedName("strMeal")

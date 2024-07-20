@@ -12,4 +12,8 @@ interface ApiService {
     suspend fun getMealsByCategory(
         @Query("c") categoryName: String
     ): BaseMainResponse
+    @GET("search.php")
+    suspend fun getMealBySearch(
+        @Query("s") mealName:String
+    ):BaseMainResponse
 }

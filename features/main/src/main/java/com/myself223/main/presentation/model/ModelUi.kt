@@ -1,7 +1,6 @@
-package com.myself223.geeksdelivery.presentation.model
+package com.myself223.main.presentation.model
 
-import com.myself223.geeksdelivery.domain.model.CategoryModel
-import com.myself223.geeksdelivery.domain.model.MealModel
+import com.myself223.domain.model.MealModel
 
 data class MealUi(
     val nameMeal: String? = null,

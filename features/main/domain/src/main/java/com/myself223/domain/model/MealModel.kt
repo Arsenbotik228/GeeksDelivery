@@ -1,4 +1,4 @@
-package com.myself223.geeksdelivery.domain.model
+package com.myself223.domain.model
 
 
 data class MealModel(
